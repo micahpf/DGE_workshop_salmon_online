@@ -40,7 +40,7 @@ View(gathered_top20_sigOE)
 Now, if we want our counts colored by sample group, then we need to combine the metadata information with the melted normalized counts data into the same data frame for input to `ggplot()`:
 
 ```r
-gathered_top20_sigOE <- inner_join(mov10_meta, gathered_top20_sigOE)
+gathered_top20_sigOE <- gathered_top20_sigOE %>% left_join(mov10_meta, by = "samplename")
 ```
 
 The `inner_join()` will merge 2 data frames with respect to the "samplename" column, i.e. a column with the same column name in both data frames.
